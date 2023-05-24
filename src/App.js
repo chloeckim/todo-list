@@ -1,24 +1,26 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import { Box, Container, CssBaseline, List, ThemeProvider, Typography, createTheme } from '@mui/material';
 
-function App() {
+const theme = createTheme();
+
+function App(props) {
+  const [tasks, setTasks] = useState(props.tasks);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <Container component="main" maxWidth="sm">
+        <CssBaseline />
+        <Box sx={{ my: 8, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+          <Typography variant='h2'>
+            Todo List
+          </Typography>
+          <List>
+            {tasks.map((task) => {})}
+          </List>
+        </Box>
+      </Container>
+    </ThemeProvider>
   );
 }
 
